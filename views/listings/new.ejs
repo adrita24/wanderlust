@@ -1,0 +1,64 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+    <h3>Create New Listing</h3>
+    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div>
+            <label for="title" class="form-label mt-4">Title</label>
+            <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required>
+            <div class="valid-feedback">Title looks good</div>
+            <div class="invalid-feedback">Please enter a catchy title</div>
+        </div>
+        <br><br>
+        <div>
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" placeholder="Enter Description" class="form-control" required></textarea>
+            <div class="valid-feedback">Description looks good</div>
+            <div class="invalid-feedback">Please enter a short description</div>        
+        </div>
+        <br><br>
+        <div>
+            <label for="image" class="form-label">Upload Listing Image</label>
+            <input name="listing[image]" type="file" class="form-control" required>
+        </div>
+        <br><br>
+        <div>
+            <label for="category"class="form-label">Select Category</label>
+            <select class="form-select" name="listing[category]">
+                <option selected>Choose the category that best fits your airbnb</option>
+                <% for(let category of categories) {%>
+                    <option value="<%= category %>"><%= category %></option>
+                <% } %>
+            </select>
+            <div class="valid-feedback">Category looks good</div>
+            <div class="invalid-feedback">Please select a category</div> 
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input name="listing[price]" placeholder="eg: 1200" type="text" class="form-control"  required>
+                <div class="valid-feedback">Price looks good</div>
+                <div class="invalid-feedback">Please enter a valid price</div>
+            </div>
+            <br><br>
+            <div class="col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input name="listing[country]" placeholder="eg: India" type="text" class="form-control"  required>
+                <div class="valid-feedback">Country looks good</div>
+                <div class="invalid-feedback">Please enter an existing country</div>    
+            </div>
+        </div>
+        <br><br>
+        <div>
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" placeholder="eg: Jaipur, Rajasthan" type="text" class="form-control"  required>
+            <div class="valid-feedback">Location looks good</div>
+            <div class="invalid-feedback">Please enter a valid location</div>        
+        </div>
+        <br><br>
+        <button class="btn btn-dark add-btn">Add</button>
+    </form>
+    </div></div>
+</body>
